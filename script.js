@@ -1,41 +1,55 @@
-let container = document.querySelector('.container');
-let songsContainer = container.querySelector('.songs-container');
-let addButton = container.querySelector('.form__submit-btn_action_add');
-let resetButton = container.querySelector('.form__submit-btn_action_reset');
+const container = document.querySelector(".container");
+const songsContainer = container.querySelector(".songs-container");
+const addButton = container.querySelector(".input__btn_action_add");
+const resetButton = container.querySelector(".input__btn_action_reset");
+const noSongsElement = container.querySelector(".no-songs");
 
-function renderAdded() {
-  let songs = songsContainer.querySelectorAll('.song');
-  let noSongsElement = container.querySelector('.no-songs');
-
-  if (songs.length === 0) {
-    resetButton.setAttribute('disabled', true);
-    resetButton.classList.add('form__submit-btn_disabled');
-    noSongsElement.classList.remove('no-songs_hidden');
-  } else {
-    resetButton.removeAttribute('disabled');
-    resetButton.classList.remove('form__submit-btn_disabled');
-    noSongsElement.classList.add('no-songs_hidden');
-  }
+function renderHasSongs() {
+  resetButton.removeAttribute("disabled");
+  resetButton.classList.remove("input__btn_disabled");
+  noSongsElement.classList.add("no-songs_hidden");
 }
 
-function addSong() {
-  let artist = document.querySelector('.input__text_type_artist');
-  let song = document.querySelector('.input__text_type_song');
-
-  songsContainer.insertAdjacentHTML('beforeend', `
-		<div class="song">
-      <h4 class="song__artist">${artist.value}</h4>
-      <p class="song__title">${song.value}</p>
-		  <button class="song__like"></button>
-		</div>
-  `);
-  
-    artist.value = "";
-    song.value = "";
-
-  renderAdded();
+function renderNoSongs() {
+  resetButton.setAttribute("disabled", true);
+  resetButton.classList.add("input__btn_disabled");
+  noSongsElement.classList.remove("no-songs_hidden");
 }
 
-addButton.addEventListener('click', addSong);
+function addSong(artistValue, titleValue) {
+  const trackContainer = document.createElement("div");
+  trackContainer.classList.add("song");
 
-renderAdded();
+  const artistElement = document.createElement("h4");
+  artistElement.classList.add("song__artist");
+  artistElement.textContent = artistValue;
+
+  const titleElement = document.createElement("h4");
+  titleElement.classList.add("song__title");
+  titleElement.textContent = titleValue;
+
+  const likeButtonElement = document.createElement("button");
+  likeButtonElement.classList.add("song__like");
+
+  trackContainer.append(artistElement, titleElement, likeButtonElement);
+  songsContainer.append(trackContainer);
+}
+
+addButton.addEventListener("click", function () {
+  const artist = document.querySelector(".input__text_type_artist");
+  const title = document.querySelector(".input__text_type_title");
+
+  addSong(artist.value, title.value);
+  renderHasSongs();
+
+  artist.value = "";
+  title.value = "";
+});
+
+resetButton.addEventListener("click", function () {
+  const songs = document.querySelectorAll(".song")
+    songs.forEach((item) => {
+      item.remove(); 
+});
+  renderNoSongs(); 
+});
