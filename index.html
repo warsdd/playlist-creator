@@ -3,41 +3,41 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-  <title>Playlist Constructor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <title>Playlist constructor</title>
 </head>
 <body>
   <header class="header">
     <img src="https://code.s3.yandex.net/web-code/logo-black-eng.png" alt="" class="header__logo">
-    <p class="header__logo-sub">Playlist Constructor</p>
+    <p class="header__logo-sub">Playlist constructor</p>
   </header>
   <main class="container">
     <div class="cover">
       <div class="cover__image"></div>
       <h1 class="cover__heading">Playlist</h1>
     </div>
-    <div class="block form">
-      <h3>Add a song</h3>
+    <div class="block">
+      <h3>Add song</h3>
       <div class="input">
-        <input type="text" placeholder="Title" class="input__text input__text_type_song">
+        <input type="text" placeholder="Name" class="input__text input__text_type_title">
         <input type="text" placeholder="Artist" class="input__text input__text_type_artist">
-        <button class="form__submit-btn form__submit-btn_action_add">
+        <button class="input__btn input__btn_action_add">
           Add
         </button>
       </div>
     </div>
-    <div class="block form">
-      <h3>Added songs</h3>
+    <div class="block">
+      <h3>Added</h3>
       <div class="no-songs">
-        <p class="no-songs__text">No added songs</p>
+        <p class="no-songs__text">No songs added</p>
       </div>
       <div class="songs-container">
 
       </div>
-      <div class="form__submit">
-        <button class="form__submit-btn form__submit-btn_action_reset">
-          Clear Playlist
+      <div class="input__submit">
+        <button class="input__btn input__btn_action_reset input__btn_disabled" disabled>
+          Clear playlist
         </button>
       </div>
     </div>
