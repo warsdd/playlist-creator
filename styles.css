@@ -19,12 +19,6 @@ input, button {
   width: 150px;
 }
 
-.header__logo-sub {
-  margin-left: 10px;
-  margin-bottom: 25px;
-  font-size: 0.6em;
-}
-
 .container {
   max-width: 468px;
   margin: auto;
