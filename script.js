@@ -17,22 +17,13 @@ function renderNoSongs() {
 }
 
 function addSong(artistValue, titleValue) {
-  const trackContainer = document.createElement("div");
-  trackContainer.classList.add("song");
+  const songTemplate = document.querySelector("#song-template").content;
+  const songElement = songTemplate.querySelector('.song').cloneNode(true);
 
-  const artistElement = document.createElement("h4");
-  artistElement.classList.add("song__artist");
-  artistElement.textContent = artistValue;
-
-  const titleElement = document.createElement("h4");
-  titleElement.classList.add("song__title");
-  titleElement.textContent = titleValue;
-
-  const likeButtonElement = document.createElement("button");
-  likeButtonElement.classList.add("song__like");
-
-  trackContainer.append(artistElement, titleElement, likeButtonElement);
-  songsContainer.append(trackContainer);
+  songElement.querySelector(".song__artist").textContent = artistValue;
+  songElement.querySelector(".song__title").textContent = titleValue;
+  
+  songsContainer.append(songElement);
 }
 
 addButton.addEventListener("click", function () {
@@ -48,8 +39,10 @@ addButton.addEventListener("click", function () {
 
 resetButton.addEventListener("click", function () {
   const songs = document.querySelectorAll(".song")
-    songs.forEach((item) => {
-      item.remove(); 
-});
-  renderNoSongs(); 
+
+  songs.forEach((item) => {
+    item.remove();
+  });
+
+  renderNoSongs();
 });
