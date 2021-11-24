@@ -9,4 +9,5 @@ A short project in the [***Practicum by Yandex***](https://practicum.yandex.com/
 [See the live Github page here](https://warsdd.github.io/playlist-creator/)
 
 
-(Fixing: issue with stylesheet file path on Github pages, in progress)
+## Fixes
+- Stylesheet file path in Github pages, in progress
